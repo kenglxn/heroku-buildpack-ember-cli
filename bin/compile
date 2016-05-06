@@ -20,8 +20,8 @@ export_env_dir $env_dir
 # add debug
 ( set -o posix ; set ) | cat
 
-status "Gimme da cache!"
-ls -al $cache_dir/*
+status "What be in the .heroku folder?"
+ls -alR $cache_dir/.heroku
 
 if [ "$BUILD_DEBUG" == "true" ]; then
   status "Enable debugging"

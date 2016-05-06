@@ -17,6 +17,12 @@ source $bp_dir/bin/common.sh
 status "Exporting config vars to environment"
 export_env_dir $env_dir
 
+# add debug
+( set -o posix ; set ) | cat
+
+status "Gimme da cache!"
+ls -alR $cache_dir
+
 if [ "$BUILD_DEBUG" == "true" ]; then
   status "Enable debugging"
   set -x
@@ -223,6 +229,9 @@ fi
 
 status "Building Ember CLI application $build_env distribution"
 $build_dir/node_modules/ember-cli/bin/ember build --environment $build_env | indent
+
+status "Gimme da cache again!"
+ls -alR $cache_dir
 
 if test -f $build_dir/hooks/after_hook.sh; then
   status "After hook detected. Running..."

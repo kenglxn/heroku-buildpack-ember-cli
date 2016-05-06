@@ -231,7 +231,7 @@ status "Building Ember CLI application $build_env distribution"
 $build_dir/node_modules/ember-cli/bin/ember build --environment $build_env | indent
 
 status "Gimme da cache again!"
-ls -alR $cache_dir
+ls -alR $cache_dir/.heroku
 
 if test -f $build_dir/hooks/after_hook.sh; then
   status "After hook detected. Running..."
